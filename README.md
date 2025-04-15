@@ -2,7 +2,8 @@
 
 A minimalist movement tracking application designed for athletes who transcend traditional training boundaries. Built with modern web technologies to help athletes monitor and visualize their progress across diverse movement domains.
 
-![Prototype Screenshot](public/screenshots/prototype.png)
+![Screenshot 2025-04-14 231057](https://github.com/user-attachments/assets/0e8add1b-6320-4d90-9a1e-bd13597a9557)
+
 
 ## Philosophy & Purpose
 
