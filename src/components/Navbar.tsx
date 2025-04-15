@@ -1,6 +1,5 @@
-
 import { Link, useLocation } from "react-router-dom";
-import { CalendarDays, FlameKindling, Map, User, Gauge } from "lucide-react";
+import { CalendarDays, FlameKindling } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
@@ -9,15 +8,12 @@ const Navbar = () => {
   const navItems = [
     { to: "/", label: "Today", icon: FlameKindling },
     { to: "/calendar", label: "Calendar", icon: CalendarDays },
-    { to: "/skill-map", label: "Skill Map", icon: Map },
-    { to: "/quests", label: "Quests", icon: Gauge },
-    { to: "/profile", label: "Profile", icon: User },
   ];
 
   return (
     <div className="sticky bottom-0 w-full bg-apex-black border-t border-apex-stone py-2 px-4 z-50">
       <nav className="max-w-5xl mx-auto">
-        <ul className="flex justify-between items-center">
+        <ul className="flex justify-center gap-16 items-center">
           {navItems.map((item) => {
             const isActive = location.pathname === item.to;
             const Icon = item.icon;
@@ -37,7 +33,7 @@ const Navbar = () => {
                       transition={{ type: "spring", duration: 0.5 }}
                     />
                   )}
-                  <Icon size={20} className="mb-1" />
+                  <Icon size={24} className="mb-1" />
                   <span className="text-xs">{item.label}</span>
                 </Link>
               </li>

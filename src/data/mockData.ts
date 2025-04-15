@@ -1,4 +1,3 @@
-
 export type Stone = {
   id: string;
   name: string;
@@ -15,7 +14,7 @@ export type Category =
   | "power" 
   | "rhythm" 
   | "core" 
-  | "flow";
+  | "gymnastics";
 
 export type TrainingLog = {
   date: string;
@@ -103,11 +102,11 @@ export const stones: Stone[] = [
     category: "balance"
   },
   {
-    id: "flow",
-    name: "Flow",
-    description: "Seamless movement transitions, improvisational freedom, and mental state.",
-    icon: "🌊",
-    category: "flow"
+    id: "gymnastics",
+    name: "Gymnastics",
+    description: "Bodyweight skills, apparatus work, and acrobatic movements.",
+    icon: "🤸",
+    category: "gymnastics"
   }
 ];
 
@@ -115,7 +114,7 @@ export const stones: Stone[] = [
 export const currentUser: User = {
   id: "user1",
   name: "Alex",
-  bio: "Martial artist, dancer, and movement explorer. Balancing power with flow.",
+  bio: "Martial artist, dancer, and movement explorer. Balancing power with gymnastics.",
   joinDate: "2024-01-15",
   skills: [
     {
@@ -155,7 +154,7 @@ export const currentUser: User = {
     }
   ],
   activeQuests: ["quest1", "quest3"],
-  focusCategories: ["balance", "power", "flow"]
+  focusCategories: ["balance", "power", "gymnastics"]
 };
 
 // Sample Quests
@@ -189,10 +188,10 @@ export const quests: Quest[] = [
   },
   {
     id: "quest4",
-    name: "Flow Sequence",
-    description: "Create a 60-second original movement flow sequence",
+    name: "Gymnastics Sequence",
+    description: "Create a 60-second original gymnastics sequence",
     completed: true,
-    relatedStones: ["flow", "coordination", "mobility"],
+    relatedStones: ["gymnastics", "coordination", "mobility"],
     progress: 100
   }
 ];

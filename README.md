@@ -1,119 +1,119 @@
+# Apex Movement: Cross-Domain Movement Tracking
 
-# Apex Movement: Move Like You Own the World
+A minimalist movement tracking application designed for athletes who transcend traditional training boundaries. Built with modern web technologies to help athletes monitor and visualize their progress across diverse movement domains.
 
-![Apex Movement Logo](public/lovable-uploads/b2ce79c8-d067-4d35-9976-b38a22d22191.png)
+![Prototype Screenshot](public/screenshots/prototype.png)
 
-## Overview
+## Philosophy & Purpose
 
-Apex Movement is a movement tracking application designed for hybrid athletes who train across multiple movement disciplines — martial arts, dance, yoga, sprinting, calisthenics, gymnastics, and more. The app provides a simple yet powerful way to track daily movement patterns, visualize training consistency, and map skill development over time.
+As athletes evolve beyond single-domain specialization, the need for a unified tracking system becomes crucial. Apex Movement was born from the philosophy that modern athletes train across multiple domains - from gymnastics to martial arts, from dance to strength training. This application serves as a minimalist tool to:
 
-## Features
+- Track daily engagement across different movement domains
+- Visualize training consistency over time
+- Maintain awareness of movement variety and balance
 
-### Daily Movement Tracking
-- Log your daily training with customizable "Training Stones" representing different movement categories
-- Add notes to capture insights and reflections about your training sessions
-- Visual progress indicators to see daily completion status
+The focus is on simplicity and functionality, removing unnecessary features to keep athletes focused on what matters: their training and progress.
 
-### Movement Calendar
-- Calendar view to track training consistency over time
-- Easily navigate between months to see historical training patterns
-- Detailed view of each day's completed stones and training notes
+## Technical Implementation
 
-### Skill Mapping
-- Visual representation of your movement skills and focuses
-- Track progress across different movement disciplines
-- Identify strengths and areas for development
+### Core Technologies
+```typescript
+{
+  "frontend": {
+    "framework": "React 18",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS",
+    "state": ["React Context", "React Query"],
+    "routing": "React Router v6",
+    "animations": "Framer Motion",
+    "ui": "Shadcn/UI"
+  }
+}
+```
 
-### Quest System
-- Set specific movement goals as "quests"
-- Track progress on active quests
-- Archive completed movement achievements
+### Key Technical Features
 
-### User Profile
-- Personalized movement profile showing training statistics
-- Track consistency and training streaks
-- View most frequently trained movement categories
+#### 1. Movement Domain Tracking
+- Modular movement "stones" system using TypeScript interfaces
+- Real-time state updates with React Context
+- Persistent storage with browser localStorage
 
-## Technology Stack
+```typescript
+interface Stone {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  category: Category;
+}
+```
 
-- **Frontend**: React, TypeScript, Tailwind CSS
-- **State Management**: React Context API, React Query
-- **Routing**: React Router
-- **Animations**: Framer Motion
-- **Data Visualization**: Recharts
-- **UI Components**: Shadcn/UI
+#### 2. Calendar Visualization
+- Custom calendar implementation with date-fns
+- Efficient date manipulation and formatting
+- Responsive grid layout with CSS Grid
+
+#### 3. State Management
+- Centralized movement context for global state
+- Optimistic updates for immediate user feedback
+- Type-safe state management with TypeScript
 
 ## Getting Started
 
-### Prerequisites
-- Node.js (v16+)
-- npm or yarn package manager
-
-### Installation
-
-1. Clone the repository
+1. Clone and install dependencies:
 ```bash
 git clone https://github.com/yourusername/apex-movement.git
 cd apex-movement
-```
-
-2. Install dependencies
-```bash
 npm install
-# or
-yarn install
 ```
 
-3. Start the development server
+2. Start development server:
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-4. Open your browser to `http://localhost:5173` to see the application
+3. Open browser to displayed localhost port
 
-## Project Structure
+## Project Architecture
 
 ```
-apex-movement/
-├── public/             # Static assets
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── context/        # React context providers
-│   ├── data/           # Mock data and constants
-│   ├── hooks/          # Custom React hooks
-│   ├── lib/            # Utility functions
-│   ├── pages/          # Application pages
-│   ├── App.tsx         # Main application component
-│   └── main.tsx        # Application entry point
-├── .gitignore
-├── package.json
-├── README.md
-└── tsconfig.json
+src/
+├── components/          # Reusable UI components
+│   ├── TrainingStone   # Movement tracking stones
+│   └── Calendar        # Training calendar
+├── context/
+│   └── MovementContext # Global state management
+├── data/
+│   └── mockData.ts     # Movement definitions
+├── pages/
+│   ├── Today          # Daily movement tracking
+│   └── Calendar       # Progress visualization
+└── types/
+    └── movement.d.ts  # TypeScript definitions
 ```
 
-## Design Philosophy
+## Development Roadmap
 
-Apex Movement follows a minimalist and bold design philosophy inspired by warrior motion, movement flow, and the nervous system. The visual identity fuses neuroscience and martial mastery, creating a digital dojo experience for movement practitioners.
+### Current Semester Prototype
+- [x] Basic movement tracking
+- [x] Calendar visualization
+- [x] Minimalist UI/UX
+- [x] Cross-domain movement support
 
-## Customization
-
-The application is designed to be customizable to fit different movement practices:
-
-- Add/modify Training Stones in the data models
-- Customize focus categories to match your training interests
-- Adjust the quest system to track your specific movement goals
+### Future Enhancements
+- [ ] Data export capabilities
+- [ ] Movement pattern analysis
+- [ ] Progressive web app support
+- [ ] Offline functionality
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+This project is part of an ongoing development to better serve athletes who train across multiple domains. Contributions that align with the core philosophy of simplicity and functionality are welcome.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - Feel free to use and modify for your own training needs.
 
-## Acknowledgments
+---
 
-- Inspired by hybrid athletes and movement practitioners worldwide
-- Designed for those who move across multiple disciplines and refuse to be confined to a single movement system
+*Built by athletes, for athletes who refuse to be confined to a single training domain.*
