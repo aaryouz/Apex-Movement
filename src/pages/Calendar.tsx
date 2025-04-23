@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useMovement } from "@/context/MovementContext";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check, Plus } from "lucide-react";
+import { Stone } from "@/data/mockData";
 
 const Calendar = () => {
-  const { trainingLogs } = useMovement();
+  const { trainingLogs, stones, toggleStone } = useMovement();
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   
   // Generate calendar days
@@ -97,20 +99,79 @@ const Calendar = () => {
               <div 
                 key={day}
                 className={`
-                  aspect-square rounded-lg flex items-center justify-center text-sm
+                  aspect-square rounded-lg p-1 relative cursor-pointer
                   ${isToday ? 'border-2 border-apex-accent' : ''}
                   ${hasTraining 
                     ? 'bg-apex-accent text-apex-black' 
-                    : 'bg-apex-stone/20 text-apex-darkGold'
+                    : 'bg-apex-stone/20 text-apex-darkGold hover:bg-apex-stone/30'
                   }
                 `}
+                onClick={() => setSelectedDate(day)}
               >
-                {new Date(day).getDate()}
+                <div className="flex justify-between items-start h-full">
+                  <span className="text-sm">{new Date(day).getDate()}</span>
+                  {hasTraining && <Check size={16} className="text-apex-black" />}
+                </div>
+                {log && log.completedStones.length > 0 && (
+                  <div className="absolute bottom-1 left-1 right-1 flex flex-wrap gap-0.5 text-xs">
+                    {log.completedStones.map(stoneId => {
+                      const stone = stones.find(s => s.id === stoneId);
+                      return stone ? (
+                        <span key={stoneId} title={stone.name}>{stone.icon}</span>
+                      ) : null;
+                    })}
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
       </motion.div>
+
+      {/* Workout Selection Dialog */}
+      {selectedDate && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+          <div className="bg-apex-black border-2 border-apex-gold rounded-lg p-6 max-w-md w-full">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-apex-gold text-lg font-medium">
+                Log Workout for {new Date(selectedDate).toLocaleDateString()}
+              </h3>
+              <button 
+                onClick={() => setSelectedDate(null)}
+                className="text-apex-darkGold hover:text-apex-gold"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              {stones.map(stone => {
+                const isCompleted = trainingLogs
+                  .find(log => log.date === selectedDate)?
+                  .completedStones.includes(stone.id) ?? false;
+
+                return (
+                  <button
+                    key={stone.id}
+                    onClick={() => toggleStone(stone.id, selectedDate)}
+                    className={`
+                      p-3 rounded-lg flex items-center gap-2
+                      ${isCompleted 
+                        ? 'bg-apex-accent text-apex-black' 
+                        : 'bg-apex-stone/20 text-apex-darkGold hover:bg-apex-stone/30'
+                      }
+                    `}
+                  >
+                    <span className="text-xl">{stone.icon}</span>
+                    <span className="flex-1 text-left">{stone.name}</span>
+                    {isCompleted && <Check size={16} />}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
